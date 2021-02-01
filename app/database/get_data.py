@@ -5,9 +5,9 @@ from app.database.db_builder import db_builder as db
 
 
 def connect(func):
-    def wrapper():
+    def wrapper(*args, **kwargs):
         db.connect()
-        func()
+        func(*args, **kwargs)
         db.disconnect()
     return wrapper
 
@@ -64,8 +64,9 @@ def create_product(product):
 
     # Get product categories
     categories = product.get("categories").replace("'", " ")
-    if not categories:
+    if not categories or product.get("categories_lc") != "fr":
         return
+        # en:
 
     # Insert product in database
     db.execute(f"""

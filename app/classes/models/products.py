@@ -2,9 +2,9 @@ from app.database.db_builder import db_builder as db
 
 
 def connect(func):
-    def wrapper():
+    def wrapper(*args, **kwargs):
         db.connect()
-        func()
+        func(*args, **kwargs)
         db.disconnect()
     return wrapper
 

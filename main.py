@@ -9,14 +9,14 @@ clear = lambda: os.system('cls')
 def main():
     """"""
     print("Creating database... This might take a few minutes.")
-    db.create_db()
+    #db.create_db()
     print("Database is ready.")
     show_menu()
 
 def show_menu():
     """"""
     clear()
-    print("1 - Quel aliment souhaitez-vous remplacer?")
+    print("1 - Chercher un aliment")
     print("2 - Retrouver mes aliments substitués")
     choice = input("> ")
 

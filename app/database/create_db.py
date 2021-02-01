@@ -18,14 +18,11 @@ def connect(func):
 @connect
 def create_db():
     """Create the database."""
-    try:
-        db.connect()
-    except:
-        db.execute("DROP TABLE IF EXISTS purbeurre")
-        db.execute("CREATE DATABASE purbeurre")
-        print("Database has been created.")
+    db.execute("DROP DATABASE IF EXISTS purbeurre")
+    db.execute("CREATE DATABASE purbeurre")
+    print("Database has been created.")
 
-        create_tables()
+    create_tables()
 
 @connect
 def create_tables():

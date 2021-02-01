@@ -24,5 +24,6 @@ def get_categories():
         print(row[0], "-", row[1])
     choice = input("> ")
 
-    if choice in categories_list:
+    categories_id = [pk for (pk, name) in categories_list]
+    if int(choice) in categories_id:
         products.get_products(choice)
