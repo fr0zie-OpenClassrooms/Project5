@@ -1,0 +1,44 @@
+CREATE TABLE IF NOT EXISTS Category(
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS Nutriscore(
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	score VARCHAR(1) NOT NULL
+);
+
+INSERT INTO Nutriscore(score) VALUES
+	('a'),
+	('b'),
+	('c'),
+	('d'),
+	('e')
+;
+
+CREATE TABLE IF NOT EXISTS Product(
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(100) NOT NULL UNIQUE,
+	brand VARCHAR(50) NOT NULL,
+	nutriscore_id INT UNSIGNED NOT NULL,
+	store VARCHAR(200),
+	description TEXT,
+	url TEXT NOT NULL,
+	FOREIGN KEY (nutriscore_id) REFERENCES Nutriscore(id)
+);
+
+CREATE TABLE IF NOT EXISTS Product_per_category(
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	category_id INT UNSIGNED,
+	product_id INT UNSIGNED,
+	FOREIGN KEY (category_id) REFERENCES Category(id),
+	FOREIGN KEY (product_id) REFERENCES Product(id)
+);
+
+CREATE TABLE IF NOT EXISTS Substitute(
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	product_id INT UNSIGNED,
+	substitute_id INT UNSIGNED,
+	FOREIGN KEY (product_id) REFERENCES Product(id),
+	FOREIGN KEY (substitute_id) REFERENCES Product(id)
+);
