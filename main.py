@@ -1,15 +1,12 @@
-import os
-
 import app.classes.models.categories as categories
 import app.database.create_db as db
+from app.functions import clear
 
-
-clear = lambda: os.system('cls')
 
 def main():
     """"""
     print("Creating database... This might take a few minutes.")
-    #db.create_db()
+    db.create_db()
     print("Database is ready.")
     show_menu()
 

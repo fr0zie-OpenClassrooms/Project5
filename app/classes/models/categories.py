@@ -1,16 +1,13 @@
 import app.classes.models.products as products
 from app.database.db_builder import db_builder as db
+from app.functions import connect
+from app.functions import clear
 
-
-def connect(func):
-    def wrapper():
-        db.connect()
-        func()
-        db.disconnect()
-    return wrapper
 
 @connect
 def get_categories():
+    clear()
+    
     categories = []
 
     db.execute("SELECT * FROM Category")

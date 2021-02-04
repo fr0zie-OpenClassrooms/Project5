@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS Nutriscore(
 	score VARCHAR(1) NOT NULL
 );
 
-INSERT INTO Nutriscore(score) VALUES
+INSERT IGNORE INTO Nutriscore(score) VALUES
 	('a'),
 	('b'),
 	('c'),

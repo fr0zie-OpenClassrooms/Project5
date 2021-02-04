@@ -2,14 +2,8 @@ import json
 import requests
 
 from app.database.db_builder import db_builder as db
+from app.functions import connect
 
-
-def connect(func):
-    def wrapper(*args, **kwargs):
-        db.connect()
-        func(*args, **kwargs)
-        db.disconnect()
-    return wrapper
 
 def get_data():
     """Get a product list from URL."""

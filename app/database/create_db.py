@@ -2,27 +2,19 @@ import json
 
 import app.database.get_data as data
 from app.database.db_builder import db_builder as db
+from app.functions import connect
 
-
-def connect(func):
-    def wrapper():
-        try:
-            db.connect()
-        except:
-            db.connect("root")
-
-        func()
-        db.disconnect()
-    return wrapper
 
 @connect
 def create_db():
     """Create the database."""
-    db.execute("DROP DATABASE IF EXISTS purbeurre")
-    db.execute("CREATE DATABASE purbeurre")
-    print("Database has been created.")
+    try:
+        db.execute("CREATE DATABASE purbeurre")
+        print("Database has been created.")
 
-    create_tables()
+        create_tables()
+    except:
+        pass
 
 @connect
 def create_tables():
