@@ -17,10 +17,12 @@ def get_categories():
         categories.append((category[0], category[1]))
 
     print("Sélectionnez la catégorie :")
-    for row in categories:
-        print(row[0], "-", row[1])
+    for category in categories:
+        print(category[0], "-", category[1])
     choice = input("> ")
 
     categories_id = [pk for (pk, name) in categories_list]
     if int(choice) in categories_id:
         products.get_products(choice)
+    else:
+        get_categories()

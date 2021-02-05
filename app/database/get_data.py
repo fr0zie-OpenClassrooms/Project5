@@ -13,7 +13,7 @@ def get_data():
         "tagtype_0": "categories",
         "tagtype_1": "countries",
         "tag_contains_1": "france",
-        "page_size": 100,
+        "page_size": 1000,
         "json": 1
     }
     products_url = requests.get("https://fr.openfoodfacts.org/cgi/search.pl", params=params)
@@ -57,10 +57,9 @@ def create_product(product):
         return
 
     # Get product categories
-    categories = product.get("categories").replace("'", " ")
+    categories = product.get("categories").replace("'", " ").replace("en:", "")
     if not categories or product.get("categories_lc") != "fr":
         return
-        # en:
 
     # Insert product in database
     db.execute(f"""

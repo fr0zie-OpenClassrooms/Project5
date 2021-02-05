@@ -1,4 +1,5 @@
 import app.classes.models.categories as categories
+import app.classes.models.substitutes as substitutes
 import app.database.create_db as db
 from app.functions import clear
 
@@ -20,7 +21,7 @@ def show_menu():
     if choice == "1":
         categories.get_categories()
     elif choice == "2":
-        pass
+        substitutes.get_saved_substitutes()
     else:
         show_menu()
 

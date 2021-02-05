@@ -16,13 +16,15 @@ def get_products(category_id):
     for product in products_list:
         db.execute(f"SELECT * FROM Product WHERE id = '{product[2]}'")
         product_info = db.fetch()
-        products.append((product_info[0], product_info[1], product_info[2], product_info[3]))
+        products.append(product_info)
 
     print("Sélectionnez le produit :")
-    for row in products:
-        print(row[0], "-", row[1], f"({row[2]})")
+    for product in products:
+        print(product[0], "-", product[1], f"({product[2]})")
     choice = input("> ")
 
     products_id = [product_id for (pk, category_id, product_id) in products_list]
     if int(choice) in products_id:
         substitutes.get_substitutes(category_id, choice)
+    else:
+        get_products(category_id)
