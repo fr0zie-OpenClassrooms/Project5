@@ -39,13 +39,11 @@ class Database:
         self.cursor.close()
         self.connection.close()
 
-    def execute(self, request, multi=False):
+    def execute(self, request, params=None, multi=False):
         """Database request execution."""
+        result = self.cursor.execute(request, params)
         if multi:
-            for rows in self.cursor.execute(request, multi=True):
-                pass
-        else:
-            self.cursor.execute(request)
+            return result
 
     def fetch(self, all=False):
         """Returns database request result."""
