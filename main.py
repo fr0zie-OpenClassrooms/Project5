@@ -1,29 +1,25 @@
-from app.classes.models.categories import Categories
-import app.classes.models.substitutes as substitutes
 import app.database.create_db as db
+from app.application import Application
 from app.functions import clear
 
 
 def main():
     """"""
-    print("Creating database... This might take a few minutes.")
     db.create_db()
-    print("Database is ready.")
-    show_menu()
-
-def show_menu():
-    """"""
     clear()
-    print("1 - Chercher un aliment")
-    print("2 - Retrouver mes aliments substitués")
+
+    print("Bienvenue dans le programme Pur Beurre !\n")
+    print("1: Chercher un aliment")
+    print("2: Retrouver mes aliments substitués")
+    print("3: Réinitialiser la base de données")
+    choices = ["1", "2", "3"]
     choice = input("> ")
 
-    if choice == "1":
-        Categories().menu()
-    elif choice == "2":
-        substitutes.get_saved_substitutes()
+    if choice not in choices:
+        main()
     else:
-        show_menu()
+        app = Application(choice)
+        app.run()
 
 
 if __name__ == "__main__":

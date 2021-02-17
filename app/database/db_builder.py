@@ -41,7 +41,7 @@ class Database:
 
     def execute(self, request, params=None, multi=False):
         """Database request execution."""
-        result = self.cursor.execute(request, params)
+        result = self.cursor.execute(request, params, multi)
         if multi:
             return result
 

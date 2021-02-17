@@ -8,21 +8,30 @@ from app.functions import connect
 @connect
 def create_db():
     """Create the database."""
+    print("Creating database... This might take a few minutes.")
+
     try:
         db.execute("CREATE DATABASE purbeurre")
         print("Database has been created.")
-
         create_tables()
     except:
-        pass
+        print("Database already exists.")
+
+@connect
+def recreate_db():
+    db.execute("DROP DATABASE IF EXISTS purbeurre")
+    create_db()
 
 @connect
 def create_tables():
     """Create tables in database."""
-    with open("app/database/tables.sql", mode="r") as file:
+    with open("app/database/tables.sql", mode="r", encoding="utf-8") as file:
         sql = file.read()
+        requests = sql.split(";")
 
-    db.execute(sql, multi=True)
+        for line in requests:
+            db.execute(line)
+    
     print("Tables have been added to database.")
 
     data.get_data()

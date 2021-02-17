@@ -1,4 +1,3 @@
-import json
 import requests
 
 from app.database.db_builder import db_builder as db
@@ -42,7 +41,7 @@ def create_product(product):
     if not nutriscore:
         return
 
-    db.execute(f"SELECT id FROM Nutriscore WHERE score = '{nutriscore}'")
+    db.execute("SELECT id FROM Nutriscore WHERE score = %s", (nutriscore,))
     nutriscore_id = db.fetch()[0]
 
     # Get product store
