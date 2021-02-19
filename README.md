@@ -24,7 +24,7 @@ pip install -r requirements.txt
 
 Finally, create a `.env` file at the project root, and insert the following:
 
-```
+```bash
 DB_USER="user"
 DB_PASSWORD="password"
 ```
