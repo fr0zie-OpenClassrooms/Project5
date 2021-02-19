@@ -1,6 +1,7 @@
-import app.database.create_db as db
 from app.application import Application
 from app.functions import clear
+
+import app.database.create_db as db
 
 
 def main():
@@ -18,8 +19,15 @@ def main():
     if choice not in choices:
         main()
     else:
-        app = Application(choice)
-        app.run()
+        if choice != choices[2]:
+            app = Application(choice)
+            app.run()
+        else:
+            print("Confirmez-vous la réinitialisation de la base de données? (O/N)")
+            confirm = input("> ")
+
+            if confirm == "o" or confirm == "O":
+                db.recreate_db()
 
 
 if __name__ == "__main__":
