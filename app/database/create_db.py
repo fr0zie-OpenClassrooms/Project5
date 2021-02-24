@@ -19,8 +19,11 @@ def create_db():
 
 @connect
 def recreate_db():
-    db.execute("DROP DATABASE IF EXISTS purbeurre")
-    create_db()
+    choice = input("Confirmez-vous la réinitialisation de la base de données? (Y/N): ").lower()
+
+    if choice == "y":
+        db.execute("DROP DATABASE IF EXISTS purbeurre")
+        create_db()
 
 @connect
 def create_tables():
