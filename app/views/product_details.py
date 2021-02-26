@@ -1,6 +1,6 @@
 from app.models.product_details import ProductDetails
 
-from app.functions import clear
+from app.helpers import clear
 
 
 class ProductDetailsView():

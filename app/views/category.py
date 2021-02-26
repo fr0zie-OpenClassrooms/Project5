@@ -1,6 +1,6 @@
 from app.models.category import Category
 
-from app.functions import clear
+from app.helpers import clear
 
 
 class CategoryView():

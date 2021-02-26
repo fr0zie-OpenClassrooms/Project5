@@ -1,6 +1,6 @@
 from app.models.product import Product
 
-from app.functions import clear
+from app.helpers import clear
 
 
 class ProductView():

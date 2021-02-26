@@ -1,6 +1,6 @@
 from app.models.substitute import Substitute
 
-from app.functions import clear
+from app.helpers import clear
 
 
 class SubstituteView():

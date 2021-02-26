@@ -1,5 +1,5 @@
 from app.database.db_builder import db_builder as db
-from app.functions import connect
+from app.helpers import connect
 
 
 class Substitute:

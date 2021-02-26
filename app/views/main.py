@@ -1,4 +1,4 @@
-from app.functions import clear
+from app.helpers import clear
 
 
 class MainView:

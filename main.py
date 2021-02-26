@@ -1,5 +1,5 @@
 from app.application import Application
-from app.functions import clear
+from app.helpers import clear
 
 import app.database.create_db as db
 

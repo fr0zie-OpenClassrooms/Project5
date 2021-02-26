@@ -2,7 +2,7 @@ import json
 
 import app.database.get_data as data
 from app.database.db_builder import db_builder as db
-from app.functions import connect
+from app.helpers import connect
 
 
 @connect
