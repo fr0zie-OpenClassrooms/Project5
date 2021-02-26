@@ -12,7 +12,7 @@ def get_data():
         "tagtype_0": "categories",
         "tagtype_1": "countries",
         "tag_contains_1": "france",
-        "page_size": 10000,
+        "page_size": 1000,
         "json": 1
     }
     products_url = requests.get("https://fr.openfoodfacts.org/cgi/search.pl", params=params)
