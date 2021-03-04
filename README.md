@@ -7,9 +7,11 @@ You can check project details on [Trello](https://www.trello.com/b/OPCfr8Gb/proj
 ## Installation
 
 This project currently supports MySQL.
+
 Installation: [MySQL](https://www.mysql.com).
 
-Create a virtual environment with the [venv](https://docs.python.org/3/tutorial/venv.html) module to install the game:
+
+Create a virtual environment with the [venv](https://docs.python.org/3/tutorial/venv.html) module to install the program:
 
 ```bash
 python3 -m venv .venv
