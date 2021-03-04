@@ -1,7 +1,4 @@
 from app.application import Application
-from app.helpers import clear
-
-import app.database.create_db as db
 
 
 def main():

@@ -10,10 +10,9 @@ class Category:
         self.page = 1
         self.page_size = 20
         self.max_pages = None
-        self.limit = self.page_size * self.page - 1
+        self.limit = self.page_size * (self.page - 1)
         self.categories_list = None
         self.categories_id_list = None
-        self.category_id = None
 
         self.get_max_pages()
         self.get_categories_id()
@@ -32,7 +31,11 @@ class Category:
 
         db.execute("SELECT COUNT(*) FROM Category")
         max_categories = db.fetch()[0]
-        self.max_pages = max_categories // self.page_size
+
+        if max_categories % self.page_size == 0:
+            self.max_pages = max_categories // self.page_size
+        else:
+            self.max_pages = (max_categories // self.page_size) + 1
 
     @connect
     def get_page(self):

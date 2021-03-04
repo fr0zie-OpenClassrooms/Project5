@@ -5,6 +5,7 @@ from app.controllers.product_details import ProductDetailsController
 from app.controllers.substitute import SubstituteController
 
 from app.database import create_db as db
+from app.helpers import create_env
 
 
 class Application:
@@ -12,6 +13,7 @@ class Application:
 
     def __init__(self):
         """Class initialization."""
+        create_env()
         db.create_db()
 
         self.controller = MainController()
@@ -37,9 +39,9 @@ class Application:
         elif command == "goto-category":
             self.controller = CategoryController()
         elif command == "goto-product":
-            self.controller = ProductController(self.controller.model.category_id)
+            self.controller = ProductController(self.controller.category_id)
         elif command == "goto-product-details":
-            self.controller = ProductDetailsController(self.controller.model.product, self.controller.model.substitute)
+            self.controller = ProductDetailsController(self.controller.product, self.controller.substitute)
         elif command == "goto-substitute":
             self.controller = SubstituteController()
         elif command == "rebuild-database":

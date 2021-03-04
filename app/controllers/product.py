@@ -11,6 +11,11 @@ class ProductController:
         self.model = self.view.model
 
         self.model.category_id = category_id
+        self.model.get_max_pages()
+        self.model.get_products_id()
+
+        self.product = None
+        self.substitute = None
 
     def display(self):
         """Method displaying page."""
@@ -31,9 +36,9 @@ class ProductController:
             if self.model.page > 1:
                 self.model.page -= 1
         elif choice.isdigit():
-            self.model.product = ProductDetails(choice)
-            substitute = self.model.product.find_substitute()
-            self.model.substitute = ProductDetails(substitute)
+            self.product = ProductDetails(choice)
+            substitute = self.product.find_substitute()
+            self.substitute = ProductDetails(substitute)
             return "goto-product-details"
                 
-        self.model.limit = self.model.page_size * self.model.page - 1
+        self.model.limit = self.model.page_size * (self.model.page - 1)

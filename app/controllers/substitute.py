@@ -12,6 +12,9 @@ class SubstituteController:
         self.view = SubstituteView()
         self.model = self.view.model
 
+        self.product = None
+        self.substitute = None
+
     def display(self):
         """Method displaying page."""
         self.view.display()
@@ -21,4 +24,7 @@ class SubstituteController:
         choice = input("> ")
 
         if int(choice) in self.model.products_id_list:
-            product = ProductDetails(choice)
+            self.product = ProductDetails(choice)
+            substitute = self.product.find_substitute()
+            self.substitute = ProductDetails(substitute)
+            return "goto-product-details"

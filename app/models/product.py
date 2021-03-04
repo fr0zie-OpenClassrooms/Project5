@@ -12,14 +12,11 @@ class Product:
         self.page = 1
         self.page_size = 20
         self.max_pages = None
-        self.limit = self.page_size * self.page - 1
+        self.limit = self.page_size * (self.page - 1)
         self.products_list = None
         self.products_id_list = None
         self.product_id = None
         self.category_id = None
-
-        self.product = None
-        self.substitute = None
 
         self.get_max_pages()
         self.get_products_id()
@@ -38,7 +35,11 @@ class Product:
 
         db.execute("SELECT COUNT(*) FROM Product_per_category WHERE category_id = %s", (self.category_id,))
         max_products = db.fetch()[0]
-        self.max_pages = max_products // self.page_size
+
+        if max_products % self.page_size == 0:
+            self.max_pages = max_products // self.page_size
+        else:
+            self.max_pages = (max_products // self.page_size) + 1
 
     @connect
     def get_page(self):

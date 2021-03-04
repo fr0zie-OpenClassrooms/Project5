@@ -8,6 +8,8 @@ class CategoryController():
         self.view = CategoryView()
         self.model = self.view.model
 
+        self.category_id = None
+
     def display(self):
         """Method displaying page."""
         self.view.display()
@@ -27,7 +29,7 @@ class CategoryController():
             if self.model.page > 1:
                 self.model.page -= 1
         elif choice.isdigit():
-            self.model.category_id = choice
+            self.category_id = choice
             return "goto-product"
                 
-        self.model.limit = self.model.page_size * self.model.page - 1
+        self.model.limit = self.model.page_size * (self.model.page - 1)

@@ -2,7 +2,12 @@
 
 This Python program interacts with the OpenFoodFacts API in order to find a healthier food substitute according to the desired product.
 
+You can check project details on [Trello](https://www.trello.com/b/OPCfr8Gb/project-5).
+
 ## Installation
+
+This project currently supports MySQL.
+Installation: [MySQL](https://www.mysql.com).
 
 Create a virtual environment with the [venv](https://docs.python.org/3/tutorial/venv.html) module to install the game:
 
