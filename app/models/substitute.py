@@ -15,7 +15,7 @@ class Substitute:
     def get_saved_substitutes(self):
         self.products_list = []
 
-        db.execute(f"SELECT * FROM Substitute")
+        db.execute("SELECT * FROM Substitute")
         products_list = db.fetch(True)
         self.products_id_list = [product_id for (pk, product_id, substitute_id) in products_list]
 
@@ -33,7 +33,8 @@ class Substitute:
 
     @connect
     def select(self, product_id):
-        db.execute("SELECT * FROM Substitute WHERE product_id = %s", (product_id))
+        db.execute("SELECT * FROM Substitute WHERE product_id = %s",
+                   (product_id))
         product = db.fetch()
         self.product = product[1]
         self.substitute = product[2]

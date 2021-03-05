@@ -2,7 +2,6 @@ from app.views.substitute import SubstituteView
 from app.models.product_details import ProductDetails
 
 
-
 class SubstituteController:
     """Class defining substitute controllers."""
 
@@ -23,7 +22,9 @@ class SubstituteController:
         """Method getting user input."""
         choice = input("> ")
 
-        if int(choice) in self.model.products_id_list:
+        if choice == "q":
+            return "quit"
+        elif choice.isdigit() and int(choice) in self.model.products_id_list:
             self.product = ProductDetails(choice)
             substitute = self.product.find_substitute()
             self.substitute = ProductDetails(substitute)

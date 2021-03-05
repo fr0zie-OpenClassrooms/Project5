@@ -21,3 +21,5 @@ class MainController():
             return "goto-substitute"
         elif choice == "3":
             return "rebuild-database"
+        elif choice == "4":
+            return "quit"

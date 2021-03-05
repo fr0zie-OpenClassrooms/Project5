@@ -25,3 +25,4 @@ class ProductView():
         print("[n] Page suivante")
         print("[b] Page précédente")
         print("[1-9999] Sélectionner le produit")
+        print("[q] Quitter l'application")

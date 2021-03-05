@@ -13,6 +13,7 @@ def get_data():
 
     print("Data has been added to database.")
 
+
 def add_data(page_nb):
     """Get a product list from URL."""
     params = {
@@ -29,6 +30,7 @@ def add_data(page_nb):
 
     for product in products:
         create_product(product)
+
 
 @connect
 def create_product(product):
@@ -69,8 +71,10 @@ def create_product(product):
 
     # Insert product in database
     db.execute("""
-            INSERT IGNORE INTO Product(name, brand, nutriscore_id, store, description, url)
-            VALUES(%s, %s, %s, %s, %s, %s)""", (name, brand, nutriscore_id, store, description, url,))
+                INSERT IGNORE INTO Product(
+                   name, brand, nutriscore_id, store, description, url
+               ) VALUES(%s, %s, %s, %s, %s, %s)""",
+               (name, brand, nutriscore_id, store, description, url,))
     db.commit()
 
     # Get product ID and create category
@@ -78,6 +82,7 @@ def create_product(product):
     product_id = db.fetch()[0]
     for category in categories.split(","):
         create_category(product_id, category)
+
 
 @connect
 def create_category(product_id, category):

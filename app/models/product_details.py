@@ -14,7 +14,7 @@ class ProductDetails:
         self.store = None
         self.description = None
         self.url = None
-        
+
         self.category_id = None
         self.category_concordance = 0
 
@@ -27,7 +27,8 @@ class ProductDetails:
 
     @connect
     def get_nutriscore(self):
-        db.execute("SELECT nutriscore_id FROM Product WHERE id = %s", (self.id,))
+        db.execute("SELECT nutriscore_id FROM Product WHERE id = %s",
+                   (self.id,))
         self.nutriscore = db.fetch()[0]
 
     @connect
@@ -68,7 +69,7 @@ class ProductDetails:
         self.get_targeted_category()
 
         db.connect()
-        
+
         db.execute("""
             SELECT product_id, nutriscore_id
             FROM Product_per_category
@@ -89,6 +90,7 @@ class ProductDetails:
 
     @connect
     def save(self):
-        db.execute("INSERT IGNORE INTO Substitute(product_id, substitute_id) VALUES(%s, %s)", (self.product.id, self.substitute.id,))
+        db.execute("INSERT IGNORE INTO Substitute(product_id, substitute_id) VALUES(%s, %s)",
+                   (self.product.id, self.substitute.id,))
         db.commit()
         print("Substitut sauvegardé dans la base de données.")

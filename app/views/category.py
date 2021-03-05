@@ -25,3 +25,4 @@ class CategoryView():
         print("[n] Page suivante")
         print("[b] Page précédente")
         print("[1-9999] Sélectionner la catégorie")
+        print("[q] Quitter l'application")

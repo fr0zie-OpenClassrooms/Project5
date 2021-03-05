@@ -12,3 +12,4 @@ class MainView:
         print("[1] Chercher un aliment")
         print("[2] Retrouver mes aliments substitués")
         print("[3] Réinitialiser la base de données")
+        print("[4] Quitter l'application")

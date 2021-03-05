@@ -35,10 +35,12 @@ class ProductController:
         elif choice == "b":
             if self.model.page > 1:
                 self.model.page -= 1
+        elif choice == "q":
+            return "quit"
         elif choice.isdigit():
             self.product = ProductDetails(choice)
             substitute = self.product.find_substitute()
             self.substitute = ProductDetails(substitute)
             return "goto-product-details"
-                
+
         self.model.limit = self.model.page_size * (self.model.page - 1)

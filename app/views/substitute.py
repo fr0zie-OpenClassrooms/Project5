@@ -20,3 +20,4 @@ class SubstituteView():
 
     def footer(self):
         print("\n[1-9999] Sélectionner le produit")
+        print("[q] Quitter l'application")

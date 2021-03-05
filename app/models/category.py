@@ -27,7 +27,7 @@ class Category:
 
     @connect
     def get_max_pages(self):
-        """Function returning the count of all categories from 'Category' table."""
+        """Function returning count of all categories from 'Category' table."""
 
         db.execute("SELECT COUNT(*) FROM Category")
         max_categories = db.fetch()[0]
@@ -46,4 +46,3 @@ class Category:
 
         for category in categories_list:
             self.categories_list.append(category)
-

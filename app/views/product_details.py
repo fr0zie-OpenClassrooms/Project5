@@ -13,7 +13,6 @@ class ProductDetailsView():
         clear()
         self.display_product(self.model.product)
         self.display_product(self.model.substitute, True)
-
         self.footer()
 
     def display_product(self, product, is_substitute=False):
@@ -31,3 +30,4 @@ class ProductDetailsView():
 
     def footer(self):
         print("\n[s] Sauvegarder le substitut")
+        print("[q] Quitter l'application")

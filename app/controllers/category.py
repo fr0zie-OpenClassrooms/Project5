@@ -28,8 +28,10 @@ class CategoryController():
         elif choice == "b":
             if self.model.page > 1:
                 self.model.page -= 1
+        elif choice == "q":
+            return "quit"
         elif choice.isdigit():
             self.category_id = choice
             return "goto-product"
-                
+
         self.model.limit = self.model.page_size * (self.model.page - 1)

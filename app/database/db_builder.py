@@ -1,5 +1,4 @@
 import os
-
 from dotenv import load_dotenv
 
 import mysql
@@ -8,7 +7,6 @@ import mysql.connector
 
 class Database:
     """Database class builder."""
-
 
     def __init__(self):
         """Class initialization."""

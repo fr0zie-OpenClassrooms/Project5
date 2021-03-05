@@ -25,7 +25,8 @@ class Product:
     def get_products_id(self):
         """Function returning all IDs matching 'category_id' from 'Product_per_category' table."""
 
-        db.execute("SELECT * FROM Product_per_category WHERE category_id = %s", (self.category_id,))
+        db.execute("SELECT * FROM Product_per_category WHERE category_id = %s",
+                   (self.category_id,))
         products_list = db.fetch(True)
         self.products_id_list = [product_id for (pk, category_id, product_id) in products_list]
 
@@ -33,7 +34,8 @@ class Product:
     def get_max_pages(self):
         """Function returning the count of all categories matching 'category_id' from 'Product_per_category' table."""
 
-        db.execute("SELECT COUNT(*) FROM Product_per_category WHERE category_id = %s", (self.category_id,))
+        db.execute("SELECT COUNT(*) FROM Product_per_category WHERE category_id = %s",
+                   (self.category_id,))
         max_products = db.fetch()[0]
 
         if max_products % self.page_size == 0:
@@ -45,7 +47,8 @@ class Product:
     def get_page(self):
         self.products_list = []
 
-        db.execute("SELECT product_id FROM Product_per_category WHERE category_id = %s LIMIT %s,%s", (self.category_id, self.limit, self.page_size,))
+        db.execute("SELECT product_id FROM Product_per_category WHERE category_id = %s LIMIT %s,%s",
+                   (self.category_id, self.limit, self.page_size,))
         products_list = db.fetch(True)
 
         for product in products_list:

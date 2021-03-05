@@ -15,6 +15,7 @@ def create_db():
     except:
         print("Database already exists.")
 
+
 @connect
 def recreate_db():
     choice = input("Confirmez-vous la réinitialisation de la base de données? (Y/N): ").lower()
@@ -22,6 +23,7 @@ def recreate_db():
     if choice == "y":
         db.execute("DROP DATABASE IF EXISTS purbeurre")
         create_db()
+
 
 @connect
 def create_tables():
@@ -32,7 +34,7 @@ def create_tables():
 
         for line in requests:
             db.execute(line)
-    
+
     print("Tables have been added to database.")
 
     data.get_data()

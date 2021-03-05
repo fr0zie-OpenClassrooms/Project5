@@ -23,3 +23,5 @@ class ProductDetailsController:
         if choice == "s":
             self.model.save()
             return "goto-menu"
+        elif choice == "q":
+            return "quit"
