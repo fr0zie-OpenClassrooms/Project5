@@ -5,10 +5,11 @@ from app.helpers import connect
 
 
 class Product:
-    """"""
+    """Product class builder."""
 
     def __init__(self):
         """Class initialization."""
+
         self.page = 1
         self.page_size = 20
         self.max_pages = None
@@ -23,7 +24,7 @@ class Product:
 
     @connect
     def get_products_id(self):
-        """Function returning all IDs matching 'category_id' from 'Product_per_category' table."""
+        """Method returning all IDs matching 'category_id' from 'Product_per_category' table."""
 
         db.execute("SELECT * FROM Product_per_category WHERE category_id = %s",
                    (self.category_id,))
@@ -32,7 +33,7 @@ class Product:
 
     @connect
     def get_max_pages(self):
-        """Function returning the count of all categories matching 'category_id' from 'Product_per_category' table."""
+        """Method returning the count of all categories matching 'category_id' from 'Product_per_category' table."""
 
         db.execute("SELECT COUNT(*) FROM Product_per_category WHERE category_id = %s",
                    (self.category_id,))
@@ -45,6 +46,8 @@ class Product:
 
     @connect
     def get_page(self):
+        """Method adding categories current page to list."""
+
         self.products_list = []
 
         db.execute("SELECT product_id FROM Product_per_category WHERE category_id = %s LIMIT %s,%s",

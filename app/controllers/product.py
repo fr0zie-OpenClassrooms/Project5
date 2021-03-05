@@ -7,6 +7,7 @@ class ProductController:
 
     def __init__(self, category_id):
         """Class initialization."""
+
         self.view = ProductView()
         self.model = self.view.model
 
@@ -19,10 +20,12 @@ class ProductController:
 
     def display(self):
         """Method displaying page."""
+
         self.view.display()
 
     def get_command(self):
         """Method getting user input."""
+
         choice = input("> ")
 
         if choice.startswith("p-"):

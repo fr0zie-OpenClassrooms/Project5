@@ -5,6 +5,7 @@ class CategoryController():
 
     def __init__(self):
         """Class initialization."""
+
         self.view = CategoryView()
         self.model = self.view.model
 
@@ -12,10 +13,12 @@ class CategoryController():
 
     def display(self):
         """Method displaying page."""
+
         self.view.display()
 
     def get_command(self):
         """Method getting user input."""
+
         choice = input("> ")
 
         if choice.startswith("p-"):

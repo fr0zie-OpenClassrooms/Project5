@@ -16,10 +16,12 @@ class SubstituteController:
 
     def display(self):
         """Method displaying page."""
+
         self.view.display()
 
     def get_command(self):
         """Method getting user input."""
+
         choice = input("> ")
 
         if choice == "q":

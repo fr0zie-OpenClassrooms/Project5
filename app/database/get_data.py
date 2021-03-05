@@ -5,7 +5,8 @@ from app.helpers import connect
 
 
 def get_data():
-    """Loop OpenFoodFacts request to get products data."""
+    """Method used to loop OpenFoodFacts request to get products data."""
+
     page_nb = 1
     while page_nb <= 10:
         add_data(page_nb)
@@ -15,7 +16,8 @@ def get_data():
 
 
 def add_data(page_nb):
-    """Get a product list from URL."""
+    """Method used to get a product list from URL."""
+
     params = {
         "action": "process",
         "tagtype_0": "categories",
@@ -34,7 +36,8 @@ def add_data(page_nb):
 
 @connect
 def create_product(product):
-    """Insert the product in 'Product' database table."""
+    """Method used to insert product in 'Product' table."""
+
     # Get product name
     name = product.get("product_name", "").replace("'", " ")
     if not name:
@@ -86,7 +89,8 @@ def create_product(product):
 
 @connect
 def create_category(product_id, category):
-    """Insert the category in 'Category' database table."""
+    """Method used to insert category in 'Category' table."""
+
     # Insert category in database
     db.execute("INSERT IGNORE INTO Category(name) VALUES(%s)", (category,))
     db.commit()

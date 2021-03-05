@@ -7,6 +7,8 @@ class MainView:
         pass
 
     def display(self):
+        """Method used to display page in terminal."""
+
         clear()
         print("Bienvenue dans le programme Pur Beurre !\n")
         print("[1] Chercher un aliment")

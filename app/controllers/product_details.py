@@ -6,6 +6,7 @@ class ProductDetailsController:
 
     def __init__(self, product, substitute):
         """Class initialization."""
+
         self.view = ProductDetailsView()
         self.model = self.view.model
 
@@ -14,10 +15,12 @@ class ProductDetailsController:
 
     def display(self):
         """Method displaying page."""
+
         self.view.display()
 
     def get_command(self):
         """Method getting user input."""
+
         choice = input("> ")
 
         if choice == "s":

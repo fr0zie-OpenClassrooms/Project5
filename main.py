@@ -2,7 +2,8 @@ from app.application import Application
 
 
 def main():
-    """Launch program."""
+    """Application launch."""
+
     app = Application()
     app.run()
 

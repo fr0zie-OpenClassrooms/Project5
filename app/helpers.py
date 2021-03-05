@@ -6,7 +6,8 @@ from app.database.db_builder import db_builder as db
 
 
 def create_env():
-    """Creates MySQL user."""
+    """Method used to create the .env file with logs."""
+
     user = ""
     pwd = ""
 
@@ -24,6 +25,8 @@ def create_env():
 
 
 def connect(func):
+    """Method used to connect to database."""
+
     def wrapper(*args, **kwargs):
         try:
             db.connect()
@@ -37,4 +40,6 @@ def connect(func):
 
 
 def clear():
+    """Method used to clear terminal."""
+
     os.system('cls')

@@ -7,9 +7,12 @@ class CategoryView():
 
     def __init__(self):
         """Class initialization."""
+
         self.model = Category()
 
     def display(self):
+        """Method used to display page in terminal."""
+
         self.model.get_page()
         clear()
 
@@ -20,6 +23,8 @@ class CategoryView():
         self.footer()
 
     def footer(self):
+        """Method used to display page footer."""
+
         print(f"\nPage {self.model.page}/{self.model.max_pages}")
         print(f"[p-1 à p-{self.model.max_pages}] Aller à la page")
         print("[n] Page suivante")

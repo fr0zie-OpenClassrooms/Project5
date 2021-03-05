@@ -3,8 +3,11 @@ from app.helpers import connect
 
 
 class Substitute:
+    """Substitute class builder."""
 
     def __init__(self):
+        """Class initialization."""
+
         self.products_list = None
         self.products_id_list = None
 
@@ -13,6 +16,8 @@ class Substitute:
 
     @connect
     def get_saved_substitutes(self):
+        """Method getting saved substitutes/products from database."""
+
         self.products_list = []
 
         db.execute("SELECT * FROM Substitute")
@@ -33,6 +38,8 @@ class Substitute:
 
     @connect
     def select(self, product_id):
+        """Method used to assign selected product and substitute to model."""
+
         db.execute("SELECT * FROM Substitute WHERE product_id = %s",
                    (product_id))
         product = db.fetch()

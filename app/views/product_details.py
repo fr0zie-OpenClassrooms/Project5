@@ -7,15 +7,20 @@ class ProductDetailsView():
 
     def __init__(self):
         """Class initialization."""
+
         self.model = ProductDetails()
 
     def display(self):
+        """Method used to display page in terminal."""
+
         clear()
         self.display_product(self.model.product)
         self.display_product(self.model.substitute, True)
         self.footer()
 
     def display_product(self, product, is_substitute=False):
+        """Method used to display a product and its details."""
+
         if is_substitute:
             print("\nSubstitut trouvé:\n")
         else:
@@ -29,5 +34,7 @@ class ProductDetailsView():
         print(f"URL: {product.url}")
 
     def footer(self):
+        """Method used to display page footer."""
+
         print("\n[s] Sauvegarder le substitut")
         print("[q] Quitter l'application")

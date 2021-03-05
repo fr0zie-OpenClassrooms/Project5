@@ -3,10 +3,11 @@ from app.helpers import connect
 
 
 class ProductDetails:
-    """"""
+    """Product details class builder."""
 
     def __init__(self, product_id=None):
         """Class initialization."""
+
         self.id = product_id
         self.name = None
         self.brand = None
@@ -27,12 +28,16 @@ class ProductDetails:
 
     @connect
     def get_nutriscore(self):
+        """Method getting product's nutriscore ID."""
+
         db.execute("SELECT nutriscore_id FROM Product WHERE id = %s",
                    (self.id,))
         self.nutriscore = db.fetch()[0]
 
     @connect
     def get_product_details(self):
+        """Method getting all product details."""
+
         db.execute("SELECT * FROM Product WHERE id = %s", (self.id,))
         product = db.fetch()
 
@@ -45,6 +50,8 @@ class ProductDetails:
 
     @connect
     def get_targeted_category(self):
+        """Method getting the most targeted category of a product."""
+
         db.execute("""
             SELECT Category.id,
             (
@@ -66,10 +73,11 @@ class ProductDetails:
 
     @connect
     def find_substitute(self):
+        """Method used to find the healthiest substitute according to the targeted category."""
+
         self.get_targeted_category()
 
         db.connect()
-
         db.execute("""
             SELECT product_id, nutriscore_id
             FROM Product_per_category
@@ -83,13 +91,14 @@ class ProductDetails:
         if not products_list:
             self.category_concordance += 1
             self.find_substitute()
-
         db.disconnect()
 
         return products_list[0][0]
 
     @connect
     def save(self):
+        """Method used to save the found substitute in database."""
+
         db.execute("INSERT IGNORE INTO Substitute(product_id, substitute_id) VALUES(%s, %s)",
                    (self.product.id, self.substitute.id,))
         db.commit()

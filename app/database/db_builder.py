@@ -10,13 +10,15 @@ class Database:
 
     def __init__(self):
         """Class initialization."""
+
         load_dotenv()
 
         self.connection = None
         self.cursor = None
 
     def connect(self, database="purbeurre"):
-        """Database connection."""
+        """Method used to connect to database."""
+
         if database == "root":
             database = ""
         host = "localhost"
@@ -33,29 +35,34 @@ class Database:
         self.cursor = self.connection.cursor()
 
     def disconnect(self):
-        """Database disconnection."""
+        """Method used to disconnect from database."""
+
         self.cursor.close()
         self.connection.close()
 
     def execute(self, request, params=None, multi=False):
-        """Database request execution."""
+        """Method used to execute a request."""
+
         result = self.cursor.execute(request, params, multi)
         if multi:
             return result
 
     def fetch(self, all=False):
-        """Returns database request result."""
+        """Method used to return database request result."""
+
         if all:
             return self.cursor.fetchall()
         else:
             return self.cursor.fetchone()
 
     def lastrowid(self):
-        """Returns database last inserted row."""
+        """Method used to return database last inserted row."""
+
         return self.cursor.lastrowid()
 
     def commit(self):
-        """Commit database last request."""
+        """Method used to commit database last request."""
+
         return self.connection.commit()
 
 

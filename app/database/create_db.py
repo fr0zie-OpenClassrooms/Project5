@@ -5,7 +5,8 @@ from app.helpers import connect
 
 @connect
 def create_db():
-    """Create the database."""
+    """Method used to create database."""
+
     print("Creating database... This might take a few minutes.")
 
     try:
@@ -18,6 +19,8 @@ def create_db():
 
 @connect
 def recreate_db():
+    """Method used to reinitialize database."""
+
     choice = input("Confirmez-vous la réinitialisation de la base de données? (Y/N): ").lower()
 
     if choice == "y":
@@ -27,7 +30,8 @@ def recreate_db():
 
 @connect
 def create_tables():
-    """Create tables in database."""
+    """Method used to create tables in database."""
+
     with open("app/database/tables.sql", mode="r", encoding="utf-8") as file:
         sql = file.read()
         requests = sql.split(";")

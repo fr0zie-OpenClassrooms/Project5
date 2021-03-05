@@ -13,6 +13,7 @@ class Application:
 
     def __init__(self):
         """Class initialization."""
+
         create_env()
         db.create_db()
 
@@ -20,7 +21,7 @@ class Application:
         self.is_running = True
 
     def run(self):
-        """Method used to loop program."""
+        """Method used to loop application."""
 
         while self.is_running:
             self.controller.display()
@@ -30,6 +31,8 @@ class Application:
         print("Merci d'avoir utilisé le programme Pur Beurre!")
 
     def update(self, command):
+        """Method used to update application and controller."""
+
         if command == "":
             return
         elif command == "quit":
