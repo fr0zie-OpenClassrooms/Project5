@@ -69,7 +69,10 @@ class ProductDetails:
             WHERE Product.id = %s
             ORDER BY products_count
         """, (self.id,))
-        self.category_id = db.fetch(True)[self.category_concordance][0]
+        try:
+            self.category_id = db.fetch(True)[self.category_concordance][0]
+        except IndexError:
+            return
 
     @connect
     def find_substitute(self):
@@ -103,3 +106,15 @@ class ProductDetails:
                    (self.product.id, self.substitute.id,))
         db.commit()
         print("Substitut sauvegardé dans la base de données.")
+
+    @connect
+    def is_product_saved(self):
+        """Method that checks if product is already in database."""
+
+        db.execute("SELECT product_id FROM Substitute WHERE product_id = %s",
+                   (self.product.id,))
+        product = db.fetch()
+        if product:
+            return True
+        else:
+            return False

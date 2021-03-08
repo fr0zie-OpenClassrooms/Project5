@@ -36,5 +36,8 @@ class ProductDetailsView():
     def footer(self):
         """Method used to display page footer."""
 
-        print("\n[s] Sauvegarder le substitut")
-        print("[q] Quitter l'application")
+        if self.model.is_product_saved():
+            print("\n[q] Quitter l'application")
+        else:
+            print("\n[s] Sauvegarder le substitut")
+            print("[q] Quitter l'application")
