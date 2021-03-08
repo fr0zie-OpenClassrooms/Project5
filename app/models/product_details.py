@@ -75,23 +75,23 @@ class ProductDetails:
     def find_substitute(self):
         """Method used to find the healthiest substitute according to the targeted category."""
 
-        self.get_targeted_category()
+        products_list = None
 
-        db.connect()
-        db.execute("""
-            SELECT product_id, nutriscore_id
-            FROM Product_per_category
-            INNER JOIN Product
-            ON Product.id = product_id
-            WHERE category_id = %s AND nutriscore_id < %s
-            ORDER BY nutriscore_id
-        """, (self.category_id, self.nutriscore,))
-        products_list = db.fetch(True)
+        while not products_list:
+            self.get_targeted_category()
 
-        if not products_list:
+            db.connect()
+            db.execute("""
+                SELECT product_id, nutriscore_id
+                FROM Product_per_category
+                INNER JOIN Product
+                ON Product.id = product_id
+                WHERE category_id = %s AND nutriscore_id < %s
+                ORDER BY nutriscore_id
+            """, (self.category_id, self.nutriscore,))
+            products_list = db.fetch(True)
+            db.disconnect()
             self.category_concordance += 1
-            self.find_substitute()
-        db.disconnect()
 
         return products_list[0][0]
 
